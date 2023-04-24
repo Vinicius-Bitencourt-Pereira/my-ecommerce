@@ -1,6 +1,7 @@
 package br.com.vinicius.ecommerce.controllers;
 
 import br.com.vinicius.ecommerce.dto.ProductDTO;
+import br.com.vinicius.ecommerce.dto.ProductMinDTO;
 import br.com.vinicius.ecommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,9 +28,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable){
-        Page<ProductDTO> page = productService.findAll(pageable);
-        return ResponseEntity.ok().body(page);
+    public ResponseEntity<Page<ProductMinDTO>> findAll(
+            @RequestParam(name = "name", defaultValue = "") String name, Pageable pageable){
+        Page<ProductMinDTO> page = productService.findAll(name, pageable);
+        return  ResponseEntity.ok().body(page);
     }
 
     @PostMapping
