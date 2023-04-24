@@ -3,11 +3,20 @@ package br.com.vinicius.ecommerce.dto;
 
 import br.com.vinicius.ecommerce.entities.Product;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
 public class ProductDTO {
 
     private Long id;
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 3, max = 80, message = "Nome deve ter entre 3 e 80 caracteres")
     private String name;
+    @NotBlank(message = "Campo requerido")
+    @Size(min = 10, message = "Descrição deve ter no mínimo 10 caracteres")
     private String description;
+    @Positive(message = "Preço deve ser positivo")
     private Double price;
     private String imgUrl;
 
