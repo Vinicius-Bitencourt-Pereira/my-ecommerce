@@ -1,11 +1,15 @@
 package br.com.vinicius.ecommerce.dto;
 
 
+import br.com.vinicius.ecommerce.entities.Category;
 import br.com.vinicius.ecommerce.entities.Product;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDTO {
 
@@ -19,6 +23,9 @@ public class ProductDTO {
     @Positive(message = "Preço deve ser positivo")
     private Double price;
     private String imgUrl;
+
+    @NotEmpty(message = "Deve ter no mínimo uma categoria")
+    private List<CategoryDTO> categories = new ArrayList<>();
 
     public ProductDTO() {
     }
@@ -37,6 +44,9 @@ public class ProductDTO {
         description = entity.getDescription();
         price = entity.getPrice();
         imgUrl = entity.getImgUrl();
+        for (Category cat : entity.getCategories()){
+            categories.add(new CategoryDTO(cat));
+        }
     }
 
     public Long getId() {
@@ -77,5 +87,9 @@ public class ProductDTO {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public List<CategoryDTO> getCategories() {
+        return categories;
     }
 }

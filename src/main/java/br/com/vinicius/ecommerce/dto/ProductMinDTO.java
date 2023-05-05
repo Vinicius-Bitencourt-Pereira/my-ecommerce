@@ -3,10 +3,6 @@ package br.com.vinicius.ecommerce.dto;
 
 import br.com.vinicius.ecommerce.entities.Product;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
-
 public class ProductMinDTO {
 
     private Long id;
