@@ -24,7 +24,24 @@ public class OrderItemDTO {
         quantity = entity.getQuantity();
     }
 
+    public Long getProductId() {
+        return productId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
     public Double getSubTotal(){
         return price * quantity;
     }
+
 }
